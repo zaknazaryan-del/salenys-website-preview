@@ -1,0 +1,23 @@
+AIGUA DE SALENYS — MOBILE STAGE 10A REVIEW BUILD
+Date: 27 October 2026
+Baseline: approved desktop master (Stage 09B).
+
+SCOPE
+- Homepage mobile hero: original coastline/bottle photo at top; exact approved lettering below, legible copy and vertically stacked actions on narrow phones.
+- Discovery homepage cards: photo above readable headings, links and action; no overlapping elements.
+- Fixed mobile header: homepage logo, menu button and all three language controls visible.
+- Blue site footer: readable columns and contact details, social links retained.
+- Mobile/tablet breakpoint extended to 1100px to eliminate desktop 1100px minimum-width overflow on landscape tablets.
+- No source modifications except src/index.css. All images, text, approved desktop styling and social links retained.
+
+LOCAL VERIFICATION
+- CSS top-level parsing: passed.
+- Representative homepage DOM visual checks in headless Chromium at 320, 360, 390, 430, 768, 900, and 1024px: document width equal to viewport, no elements outside viewport.
+- Original desktop at 1366px: document width equal viewport and original desktop navigation-band heights unchanged.
+- ZIP integrity and required entry files: passed.
+
+IMPORTANT LIMITATIONS
+- Representative static HTML/CSS test, not a full React/Vite production build or device/browser test.
+- npm registry unavailable here, so a complete local Vite build was not possible.
+- All internal content pages and forms require additional mobile screenshots/review before final sign-off.
+- No change has yet been deployed to Github/Netlify; review after commit and deploy.
