@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap');
+.salenys-experience { background:#f8f5ed; color:#44565e; font-family:'DM Sans',Arial,sans-serif; }
+.salenys-experience * {box-sizing:border-box}
+.salenys-experience .experience-paper { background-color:#f8f5ed; background-image:url('/assets/experience/background.webp');background-size:650px auto;background-repeat:repeat; }
+.salenys-experience .experience-hero {width:100%;display:block;aspect-ratio:1920/780;object-fit:cover;object-position:center}
+.salenys-experience .experience-inner {max-width:1380px;width:100%;margin:0 auto}
+.salenys-experience h1,.salenys-experience h2 {font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;color:#194f64;line-height:1.13}
+.salenys-experience .experience-eyebrow,.salenys-experience .experience-flag {font-size:12px;letter-spacing:.18em;font-weight:700;color:#2b7c90;text-transform:uppercase}
+.salenys-experience .experience-intro {padding:88px max(6vw,25px) 78px}
+.salenys-experience h1 {font-size:clamp(42px,4.5vw,70px);margin:17px 0}
+.salenys-experience .experience-subtitle {font-family:'Cormorant Garamond',Georgia,serif;color:#2c5b6c;font-size:clamp(23px,2.4vw,34px);margin-bottom:34px}
+.salenys-experience .experience-copy {font-size:18px;line-height:1.78}
+.salenys-experience .experience-copy p {margin:0 0 21px}
+.salenys-experience .experience-wide-copy {width:100%;column-count:2;column-gap:clamp(44px,5.6vw,104px);column-fill:balance}
+.salenys-experience .experience-wide-copy p {break-inside:avoid;page-break-inside:avoid}
+.salenys-experience .experience-pair {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
+.salenys-experience .experience-pair>img {display:block;width:100%;height:100%;min-height:590px;object-fit:cover;object-position:center}
+.salenys-experience .experience-textpane {min-width:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(46px,5vw,98px)}
+.salenys-experience .experience-textpane h2 {font-size:clamp(37px,3.4vw,55px);margin:18px 0 28px}
+.salenys-experience .experience-conclusion {padding:78px max(6vw,25px) 72px}
+.salenys-experience .experience-conclusion h2 {font-size:clamp(38px,3.7vw,56px);margin:0 0 30px}
+.salenys-experience .experience-ending {padding:58px 7% 95px;text-align:center}
+.salenys-experience .experience-ending h2 {font-size:clamp(38px,3.8vw,60px);margin:0 auto;max-width:1060px}
+.salenys-experience .experience-final-blue-line {height:5px;width:100%;background:#167d9b}
+@media(max-width:1050px){.salenys-experience .experience-textpane{padding:45px 36px}.salenys-experience .experience-copy{font-size:16px;line-height:1.76}.salenys-experience .experience-pair>img{min-height:500px}}
+@media(max-width:760px){.salenys-experience .experience-hero{aspect-ratio:1.7}.salenys-experience .experience-intro{padding:58px 7% 57px}.salenys-experience .experience-wide-copy{column-count:1}.salenys-experience .experience-pair{display:flex;flex-direction:column}.salenys-experience .experience-pair>img{order:0;aspect-ratio:1;min-height:0;height:auto}.salenys-experience .experience-pair>.experience-textpane{order:1;padding:55px 7% 64px}.salenys-experience .experience-textpane h2{font-size:42px}.salenys-experience .experience-conclusion{padding:52px 7% 54px}.salenys-experience .experience-ending{padding:56px 7% 76px}}

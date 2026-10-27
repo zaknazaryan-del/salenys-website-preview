@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap');
+.salenys-products { --ink:#123341;--blue:#06384f;--salenys:#006d9d;--cream:#f8f4e9; color:var(--ink);font-family:'DM Sans',Arial,sans-serif; background-color:var(--cream); }
+.salenys-products * {box-sizing:border-box}
+.salenys-products .paper{background-color:#f8f4e9;background-image:url("/assets/products/background.webp");background-size:650px auto;background-repeat:repeat}
+.salenys-products .hero{width:100%;aspect-ratio:1920/780;max-height:780px;object-fit:cover;object-position:center 46%;display:block}
+.salenys-products .intro{padding:90px max(7%,calc((100vw - 1100px)/2)) 96px}
+.salenys-products .eyebrow{color:#1683a2;text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;margin:0 0 26px}
+.salenys-products .intro h1{font:500 clamp(43px,5vw,76px)/1.06 "Cormorant Garamond",Georgia,serif;color:#083d52;margin:0 0 12px}
+.salenys-products .sub{font:400 clamp(22px,2.4vw,32px)/1.25 "Cormorant Garamond",Georgia,serif;color:#426575;margin:0 0 40px}
+.salenys-products .copy{font-size:16px;line-height:1.88;color:#34515a}
+.salenys-products .copy p{margin:0 0 20px}
+.salenys-products .chapter-title{font:500 clamp(38px,4vw,61px)/1.08 "Cormorant Garamond",Georgia,serif;color:#103e50;margin:0 0 16px}
+.salenys-products .center-title{text-align:center}
+.salenys-products .narrow{max-width:930px;margin:auto}
+.salenys-products .formats{padding:75px 5.5% 96px}
+.salenys-products .formats .lead{text-align:center;font-size:16px;line-height:1.8;color:#3e5963;max-width:850px;margin:0 auto 50px}
+.salenys-products .format-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:1470px;margin:auto}
+.salenys-products .format{min-width:0}
+.salenys-products .format img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.salenys-products .format-copy{padding:24px 6px 12px}
+.salenys-products .format h3{font:500 clamp(27px,2.5vw,36px)/1.18 "Cormorant Garamond",Georgia,serif;color:#103e50;margin:0 0 13px}
+.salenys-products .format p{font-size:14px;line-height:1.75;margin:0;color:#3b5561}
+.salenys-products .final-formats{margin:56px auto 0;text-align:center;max-width:980px;font-size:17px;line-height:1.75;color:#244b5b}
+.salenys-products .packaging-intro{text-align:center;padding:88px 24px 55px}
+.salenys-products .packaging-intro p{max-width:880px;font-size:16px;line-height:1.8;color:#3c5860;margin:0 auto}
+.salenys-products .packages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+.salenys-products .package{min-width:0}
+.salenys-products .package img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.salenys-products .package-info{padding:42px min(7%,72px) 65px}
+.salenys-products .package-info h3{font:500 clamp(30px,3vw,42px)/1.1 "Cormorant Garamond",Georgia,serif;color:#103e50;margin:0 0 25px}
+.salenys-products .package table{width:100%;border-collapse:collapse;font-size:14px;color:#254d59;background:rgba(255,255,255,.34)}
+.salenys-products .package th{text-align:left;background:rgba(6,56,79,.07);font-weight:700;padding:15px 14px}
+.salenys-products .package td{padding:16px 14px;border-bottom:1px solid rgba(10,60,78,.15)}
+.salenys-products .package th:last-child, .salenys-products .package td:last-child{text-align:right}
+.salenys-products .distribution-note{text-align:center;padding:0 24px 80px;max-width:950px;margin:auto;font-size:16px;line-height:1.8;color:#3a5860}
+.salenys-products .heritage{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.salenys-products .heritage img{display:block;width:100%;height:100%;aspect-ratio:1;object-fit:cover}
+.salenys-products .heritage-text{padding:8%;display:flex;flex-direction:column;justify-content:center}
+.salenys-products .heritage-text h2{font:500 clamp(37px,3.8vw,60px)/1.1 "Cormorant Garamond",Georgia,serif;color:#103e50;margin:0 0 30px}
+.salenys-products .heritage-text p{font-size:16px;line-height:1.85;color:#3b5660;margin:0 0 22px}
+.salenys-products .ending{padding:115px 24px 108px;text-align:center}
+.salenys-products .ending h2{font:500 clamp(38px,4vw,60px)/1.13 "Cormorant Garamond",Georgia,serif;color:#123f52;margin:0 auto;max-width:960px}
+.salenys-products .final-blue-line{height:5px;background:#167d9b;width:100%}
+.salenys-products .paper {background-color:#f8f4e9;background-image:url('/assets/products/background.webp');background-size:650px auto;background-repeat:repeat}
+.salenys-products .products-final-blue-line {height:5px;background:#167d9b;width:100%}
+@media(max-width:1000px){.salenys-products .heritage-text{padding:7%}.salenys-products .copy{font-size:15px}.salenys-products .package-info{padding:35px 5% 45px}}
+@media(max-width:700px){.salenys-products .hero{aspect-ratio:1.65;object-position:center center}.salenys-products .intro{padding:58px 7% 66px}.salenys-products .intro h1{font-size:48px}.salenys-products .formats{padding:56px 6% 70px}.salenys-products .formats .lead{margin-bottom:32px}.salenys-products .format-grid{grid-template-columns:1fr;gap:35px;max-width:440px}.salenys-products .format h3{font-size:32px}.salenys-products .format-copy{padding:15px 1px 0}.salenys-products .final-formats{margin:44px auto 0}.salenys-products .packaging-intro{padding:67px 7% 35px}.salenys-products .packages{grid-template-columns:1fr}.salenys-products .package-info{padding:27px 7% 43px}.salenys-products .distribution-note{padding:0 7% 60px}.salenys-products .heritage{grid-template-columns:1fr}.salenys-products .heritage-text{padding:50px 7%}.salenys-products .ending{padding:83px 7% 85px}.salenys-products .ending h2{font-size:41px}.salenys-products .paper{background-size:420px auto}}

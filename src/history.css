@@ -1,0 +1,49 @@
+/* LOCKED History visual. All selectors scoped; Homepage/Water styles are unchanged. */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap');
+.salenys-history { --history-blue:#06384f; --history-accent:#006d9d; color:#123341; font-family:'DM Sans',Arial,sans-serif; }
+.salenys-history * { box-sizing:border-box; }
+.salenys-history .history-hero-image { display:block;width:100%;height:min(40.625vw,760px);min-height:310px;object-fit:cover; }
+.salenys-history .history-paper { background:#f8f4e9 url('/assets/history/history-ivory-texture.webp') repeat; background-size:840px auto; }
+.salenys-history .history-intro { padding:90px max(7.5vw,32px) 98px; }
+.salenys-history .history-intro-inner { max-width:1030px;margin:auto; }
+.salenys-history .history-eyebrow { color:var(--history-accent);font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin:0 0 23px; }
+.salenys-history .history-intro h1 { font:500 clamp(42px,5vw,72px)/1.08 'Cormorant Garamond',Georgia,serif;color:var(--history-blue);margin:0 0 14px;max-width:1000px; }
+.salenys-history .history-subheading { font:500 clamp(24px,2.5vw,34px)/1.25 'Cormorant Garamond',Georgia,serif;color:#3c6573;margin:0 0 35px; }
+.salenys-history .history-bodycopy { font-size:17px;line-height:1.85;max-width:880px;color:#324a52; }
+.salenys-history .history-bodycopy p { margin:0 0 18px; }
+.salenys-history .history-split { display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:620px; }
+.salenys-history .history-square-photo { width:100%;height:100%;min-height:620px;object-fit:cover;display:block; }
+.salenys-history .history-text-side { display:flex;align-items:center;padding:70px clamp(38px,5.2vw,105px); }
+.salenys-history .history-text-inner { max-width:600px; }
+.salenys-history .history-split h2,.salenys-history .history-full-story h2 {font:500 clamp(36px,3vw,51px)/1.1 'Cormorant Garamond',Georgia,serif;color:var(--history-blue);margin:0 0 27px;}
+.salenys-history .history-split .history-bodycopy {font-size:16px;line-height:1.85;}
+.salenys-history .history-full-story {padding:95px 9vw 105px;}
+.salenys-history .history-full-story .history-text-inner {max-width:930px;margin:auto;}
+.salenys-history .history-full-story .history-bodycopy {max-width:930px;}
+.salenys-history .history-finale {text-align:center;padding:92px 24px 104px;}
+.salenys-history .history-rule {width:48px;height:2px;background:var(--history-accent);margin:0 auto 24px;}
+.salenys-history .history-finale h2 {font:500 clamp(36px,4vw,61px)/1.16 'Cormorant Garamond',Georgia,serif;color:var(--history-blue);max-width:880px;margin:0 auto;}
+@media(max-width:950px) {
+ .salenys-history .history-split {min-height:0;}
+ .salenys-history .history-square-photo {min-height:480px;}
+ .salenys-history .history-text-side {padding:35px 27px;}
+ .salenys-history .history-split .history-bodycopy {font-size:14px;line-height:1.65;}
+ .salenys-history .history-split h2 {font-size:35px;}
+}
+@media(max-width:680px) {
+ .salenys-history .history-hero-image {min-height:245px;height:58vw;}
+ .salenys-history .history-intro {padding:55px 24px 58px;}
+ .salenys-history .history-intro h1 {font-size:44px;}
+ .salenys-history .history-subheading {font-size:25px;}
+ .salenys-history .history-bodycopy {font-size:15px;line-height:1.75;}
+ .salenys-history .history-split {display:flex;flex-direction:column;}
+ .salenys-history .history-split.history-reverse {flex-direction:column-reverse;}
+ .salenys-history .history-square-photo {height:auto;min-height:0;aspect-ratio:1/1;object-fit:cover;}
+ .salenys-history .history-text-side {padding:52px 26px 60px;}
+ .salenys-history .history-split h2 {font-size:40px;}
+ .salenys-history .history-split .history-bodycopy {font-size:15px;line-height:1.75;}
+ .salenys-history .history-full-story {padding:56px 26px 65px;}
+ .salenys-history .history-full-story h2 {font-size:40px;}
+ .salenys-history .history-finale {padding:65px 24px 75px;}
+ .salenys-history .history-finale h2 {font-size:40px;}
+}
