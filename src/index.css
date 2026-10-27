@@ -1148,3 +1148,35 @@ html { scroll-padding-top:90px; }
 @media (max-width: 900px) {
   body { min-width: 0; }
 }
+
+/* Stage 09 — user-approved corrections (27 October 2026). */
+/* Social icons at 2x original SVG size, both fixed header and blue footer. */
+.social-links svg { width: 36px; height: 36px; flex:none; }
+.social-links a { width: 50px; height: 50px; }
+.social-links { gap: 8px; }
+.header-utilities .language-selector button { color: #111111; }
+.header-utilities .language-selector button.is-active,
+.header-utilities .language-selector button:hover { color: #000000; font-weight: 800; }
+.header-utilities .language-selector button + button::before { color: #141414; }
+/* Use supplied exact Salenys logotype in hero rather than substitute fonts. */
+.hero .hero-brand-title { display:block; max-width:590px; width:100%; line-height:1; }
+.hero .hero-brand-lettering { display:block; width:100%; height:auto; max-width:590px; object-fit:contain; }
+.water-page-section { scroll-margin-top:76px; }
+.water-page-section + .water-page-section { border-top: 1px solid rgba(6,56,79,.14); }
+/* Make room for larger social icons in desktop navigation without changing page interiors. */
+@media (min-width:1221px) and (max-width:1450px) {
+  .header-inner { width:calc(100% - 26px); grid-template-columns:86px minmax(0,1fr) auto; }
+  .main-navigation { gap:clamp(9px,1.05vw,16px); transform:translateX(-12px); }
+  .header-utilities { gap:6px; }
+  .social-links { gap:2px; }
+  .social-links a {width:42px;height:46px;}
+  .social-links svg {width:36px;height:36px;}
+}
+@media(max-width:1220px) and (min-width:901px) {
+  /* The mobile/tablet breakpoint intentionally hides header socials to avoid collisions. */
+  .footer-contact .social-links {display:flex;}
+}
+@media(max-width:900px) {
+  .hero .hero-brand-title {max-width:min(85vw,500px);}
+  .footer-contact .social-links {display:flex;}
+}

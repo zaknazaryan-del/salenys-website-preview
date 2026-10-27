@@ -335,9 +335,8 @@ function Hero() {
       <div className="hero-shade" />
       <div className="hero-inner">
         <div className="hero-copy">
-          <h1 id="hero-title">
-            <span>Aigua de</span>
-            <strong>SALENYS</strong>
+          <h1 id="hero-title" className="hero-brand-title">
+            <img className="hero-brand-lettering" src="/assets/salenys-hero-lettering.png" alt="Aigua de Salenys" />
           </h1>
           <p className="hero-product-description">
             Naturally carbonated water from Costa Brava
@@ -552,7 +551,7 @@ function Footer({
           <div className="footer-contact-details">
             <p>Aigua de Salenys</p>
             <a href="mailto:salenys@salenys.es">salenys@salenys.es</a>
-            <a href="tel:+34872096502">0034872096502</a>
+            <a href="tel:+34872096502">(+34)872096502</a>
           </div>
           <SocialLinks light />
           <div
@@ -691,6 +690,31 @@ function MineralProfilePage() {
   )
 }
 
+function WaterPages() {
+  // Each historical deep link remains valid, but all three approved water pages
+  // now flow consecutively with a single footer, like Origin & History.
+  useEffect(() => {
+    const path = window.location.pathname.replace(/\/+$/, "")
+    const routeTarget: Record<string, string> = {
+      "/the-water/mineral-composition": "water-composition",
+      "/the-water/mineral-profile": "water-profile",
+    }
+    const hashTarget = window.location.hash.replace(/^#/, "")
+    const targetId = hashTarget || routeTarget[path]
+    if (!targetId) return
+    const goToTarget = () => document.getElementById(targetId)?.scrollIntoView({ block: "start" })
+    window.requestAnimationFrame(() => window.requestAnimationFrame(goToTarget))
+  }, [])
+
+  return (
+    <div className="water-pages" aria-label="The Water — complete presentation">
+      <div id="water-carbonation" className="water-page-section"><NaturalCarbonationPage /></div>
+      <div id="water-composition" className="water-page-section"><MineralCompositionPage /></div>
+      <div id="water-profile" className="water-page-section"><MineralProfilePage /></div>
+    </div>
+  )
+}
+
 function detectInitialLanguage(): Language {
   const saved = window.localStorage.getItem("salenys-language")
   if (saved === "en" || saved === "es" || saved === "cat") return saved
@@ -738,19 +762,13 @@ export default function App() {
           <ProductsPage />
         ) : ["/origin-history", "/origin-history/history", "/origin-history/origin"].includes(window.location.pathname.replace(/\/+$/, "")) ? (
           <><HistoryPage followedByOrigin /><OriginPage /></>
-        ) : ["/the-water", "/the-water/natural-carbonation"].includes(window.location.pathname.replace(/\/+$/, "")) ? (
-          <NaturalCarbonationPage />
-        ) : window.location.pathname.replace(/\/+$/, "") === "/the-water/mineral-composition" ? (
-          <MineralCompositionPage />
-        ) : window.location.pathname.replace(/\/+$/, "") === "/the-water/mineral-profile" ? (
-          <MineralProfilePage />
+        ) : ["/the-water", "/the-water/natural-carbonation", "/the-water/mineral-composition", "/the-water/mineral-profile"].includes(window.location.pathname.replace(/\/+$/, "")) ? (
+          <WaterPages />
         ) : (
           <><Hero /><NavigationBands /></>
         )}
       </main>
-      {!(["/the-water/natural-carbonation", "/the-water/mineral-composition"].includes(window.location.pathname.replace(/\/+$/, ""))) && (
-        <Footer language={language} onLanguageChange={changeLanguage} />
-      )}
+      <Footer language={language} onLanguageChange={changeLanguage} />
     </>
   )
 }

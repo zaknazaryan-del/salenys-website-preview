@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { FormEvent, ReactNode } from 'react';
 import './findSalenys.css';
 
@@ -6,7 +6,7 @@ import './findSalenys.css';
 export const findSalenysConfig = {
   company: 'Aigua de Salenys SL',
   email: 'salenys@salenys.es',
-  phoneDisplay: '872 096 502',
+  phoneDisplay: '(+34)872096502',
   phoneHref: 'tel:+34872096502',
   mapEnabled: false, // future customer map module is opt-in, never automatically populated
   documents: [
@@ -26,6 +26,34 @@ function DocItem({ title, description, url, optional }: { title: string; descrip
   return <div className="fs-document"><div className="fs-docleft"><span className="fs-pdf" aria-hidden="true">PDF</span><div><strong>{title}</strong><small>{description}</small></div></div>{url ? <a href={url} target="_blank" rel="noopener noreferrer">Download PDF</a> : <span className="fs-docstatus">{optional ? 'Optional' : 'Document to add'}</span>}</div>;
 }
 export default function FindSalenysPage() {
+  const [orderOpen, setOrderOpen] = useState(false);
+  const [orderStatus, setOrderStatus] = useState<'idle'|'sending'|'success'|'error'>('idle');
+  const orderFirstField = useRef<HTMLSelectElement>(null);
+  useEffect(() => {
+    if (!orderOpen) return;
+    orderFirstField.current?.focus();
+    const onKeyDown = (event: KeyboardEvent) => { if (event.key === 'Escape') setOrderOpen(false); };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [orderOpen]);
+  async function submitOrder(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setOrderStatus('sending');
+    const values = new FormData(event.currentTarget);
+    const params = new URLSearchParams();
+    values.forEach((value, key) => params.append(key, String(value)));
+    try {
+      const response = await fetch('/__forms.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+      });
+      if (!response.ok) throw new Error('Order request submission failed');
+      setOrderStatus('success');
+    } catch {
+      setOrderStatus('error');
+    }
+  }
   const [businessOpen, setBusinessOpen] = useState(false);
   const [businessType, setBusinessType] = useState('Restaurant');
   const [suggestOpen, setSuggestOpen] = useState(false);
@@ -44,8 +72,27 @@ export default function FindSalenysPage() {
       <div className="fs-kicker">Find Salenys · Contact &amp; Partnerships</div>
       <h1>Discover Salenys.<br/>Connect with us.</h1>
       <p className="fs-lead">Whether you would like to offer Salenys at your establishment, get in touch with our team, or suggest a place to enjoy it, we would be delighted to hear from you.</p>
-      <div className="fs-actions"><a className="fs-button" href="#collaborate">Collaborate With Salenys ↗</a><a className="fs-button fs-outline" href="#contact">Contact Us ↗</a></div>
+      <div className="fs-actions"><button type="button" className="fs-button" onClick={() => { setOrderStatus('idle'); setOrderOpen(true); }} aria-haspopup="dialog">Order Salenys ↗</button><a className="fs-button fs-outline" href="#contact">Contact Us ↗</a></div>
     </section>
+    {orderOpen && <div className="fs-order-overlay" onMouseDown={event => { if (event.target === event.currentTarget) setOrderOpen(false); }}>
+      <div className="fs-order-modal" role="dialog" aria-modal="true" aria-labelledby="fs-order-title">
+        <div className="fs-formtop"><h2 id="fs-order-title">Order Salenys</h2><button type="button" className="fs-order-close" aria-label="Close order form" onClick={() => setOrderOpen(false)}>×</button></div>
+        {orderStatus === 'success' ? <div role="status" className="fs-order-success"><p>Your order request has been sent. We will contact you using the telephone number provided.</p><button type="button" className="fs-button" onClick={() => setOrderOpen(false)}>Close</button></div> : <>
+          <p className="fs-order-description">For orders in Barcelona and Girona provinces. Our team will contact you to confirm the details.</p>
+          <form name="salenys-order-request" method="POST" data-netlify="true" onSubmit={submitOrder}>
+            <input type="hidden" name="form-name" value="salenys-order-request" />
+            <p className="fs-order-honeypot" aria-hidden="true"><label>Leave this field blank<input type="text" name="bot-field" autoComplete="off" tabIndex={-1} /></label></p>
+            <Field label="Province"><select ref={orderFirstField} name="province" required defaultValue=""><option value="" disabled>Select province</option><option value="Barcelona">Barcelona</option><option value="Girona">Girona</option></select></Field>
+            <Field label="Name"><input name="name" type="text" required minLength={2} autoComplete="name" /></Field>
+            <Field label="City"><input name="city" type="text" required minLength={2} autoComplete="address-level2" /></Field>
+            <Field label="Telephone"><input name="telephone" type="tel" required minLength={6} autoComplete="tel" inputMode="tel" /></Field>
+            <p className="fs-order-note">We use your details only to contact you about this order request.</p>
+            <button className="fs-button fs-order-submit" type="submit" disabled={orderStatus === 'sending'}>{orderStatus === 'sending' ? 'Sending…' : 'Submit order request'}</button>
+            {orderStatus === 'error' && <p role="alert" className="fs-order-error">Your request could not be sent. Please try again or call <a href="tel:+34872096502">(+34)872096502</a>.</p>}
+          </form>
+        </>}
+      </div>
+    </div>}
     <section id="collaborate" className="fs-section fs-muted">
       <div className="fs-sectionheading"><div className="fs-kicker">01 / Business relationships</div><h2>Collaborate With Salenys</h2><p>We welcome enquiries from restaurants, hotels, retailers, distributors, importers and other businesses in Spain and internationally.</p></div>
       <div className="fs-routes"><div className="fs-route"><div className="fs-tag">Hospitality &amp; retail</div><h3>Bring Salenys to your establishment.</h3><p>Offer a naturally carbonated mineral water with a distinctive origin and a long heritage in glass.</p><button type="button" className="fs-button" onClick={()=>showBusiness('Restaurant')}>Start a collaboration enquiry ↗</button></div><div className="fs-route fs-alt"><div className="fs-tag">Distribution &amp; import</div><h3>Explore a commercial partnership.</h3><p>For distributors, importers and partners interested in introducing Salenys to new markets.</p><button type="button" className="fs-button fs-outline" onClick={()=>showBusiness('Distributor')}>Discuss a partnership ↗</button></div></div>
