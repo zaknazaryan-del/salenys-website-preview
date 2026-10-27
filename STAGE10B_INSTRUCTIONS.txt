@@ -1,0 +1,6 @@
+AIGUA DE SALENYS — MOBILE HEADER STAGE 10B
+
+Only two source files changed: src/App.tsx and src/index.css.
+On mobile/tablet (<=1100 px) the fixed header is fully transparent at the top. After scrolling more than 48 px, it becomes pale grey and the five-section hamburger menu appears. Returning to the top hides the menu and closes an expanded mobile menu. Desktop CSS (>1100 px) is unchanged.
+
+To update GitHub, extract this ZIP, drag the src folder to GitHub Add file > Upload files, confirm replacement of the same paths, commit, then check Netlify deployment. No photographs or design text are changed.

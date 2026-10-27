@@ -1419,3 +1419,49 @@ html { scroll-padding-top:90px; }
   .language-selector button { font-size: 9px; padding: 6px 2px; }
   .band-content, .navigation-band--right .band-content { padding: 20px 16px; }
 }
+
+
+/* Stage 10B — approved mobile header behavior.
+   At the top, the fixed header floats transparently over the hero image.
+   Scrolling >48px activates the neutral-grey backdrop and reveals the
+   five-section hamburger menu. Desktop (>1100px) is intentionally untouched. */
+@media (max-width: 1100px) {
+  .site-header:not(.site-header--scrolled),
+  body:has(.carbonation-hero) .site-header:not(.site-header--scrolled) {
+    background: transparent;
+    box-shadow: none;
+  }
+  .site-header:not(.site-header--scrolled)::before {
+    background: transparent;
+    border-bottom-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .site-header--scrolled,
+  body:has(.carbonation-hero) .site-header--scrolled {
+    background: transparent;
+    box-shadow: 0 5px 19px rgba(8, 47, 66, 0.10);
+  }
+  .site-header--scrolled::before {
+    background: rgba(231, 233, 234, 0.96);
+    border-bottom-color: rgba(5, 74, 100, 0.14);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  .mobile-navigation-toggle {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 200ms ease, visibility 200ms ease, transform 200ms ease;
+  }
+  .site-header--scrolled .mobile-navigation-toggle {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .mobile-navigation-toggle { transition: none; }
+}

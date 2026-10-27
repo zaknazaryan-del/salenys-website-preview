@@ -155,7 +155,16 @@ function Header({
   const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 48)
+    const onScroll = () => {
+      const hasScrolled = window.scrollY > 48
+      setScrolled(hasScrolled)
+      // The mobile menu only becomes available with the grey, scrolled header.
+      // Never reopen a previously expanded menu unexpectedly when scrolling down.
+      if (!hasScrolled && window.matchMedia("(max-width: 1100px)").matches) {
+        setOpenMenu(null)
+        setMobileMenuOpen(false)
+      }
+    }
     const onPointerDown = (event: PointerEvent) => {
       if (!headerRef.current?.contains(event.target as Node)) setOpenMenu(null)
     }
