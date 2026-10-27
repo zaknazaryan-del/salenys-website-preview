@@ -184,7 +184,22 @@ function Header({
       className={`site-header${scrolled ? " site-header--scrolled" : ""}`}
     >
       <div className="header-inner">
-        <a className="brand-mark" href="/" aria-label="Aigua de Salenys — Home">
+        <a
+          className="brand-mark"
+          href="/"
+          aria-label="Aigua de Salenys — Go to homepage"
+          title="Go to homepage"
+          onClick={(event) => {
+            // A regular link returns from every internal page. On the homepage,
+            // scroll to its beginning without triggering an unnecessary reload.
+            if (window.location.pathname.replace(/\/+$/, "") === "") {
+              event.preventDefault()
+              window.scrollTo({ top: 0, behavior: "smooth" })
+            }
+            setOpenMenu(null)
+            setMobileMenuOpen(false)
+          }}
+        >
           <img src="/assets/salenys-logo.svg" alt="Aigua de Salenys" />
         </a>
 
