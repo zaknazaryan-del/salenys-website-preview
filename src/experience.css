@@ -24,3 +24,16 @@
 .salenys-experience .experience-final-blue-line {height:5px;width:100%;background:#167d9b}
 @media(max-width:1050px){.salenys-experience .experience-textpane{padding:45px 36px}.salenys-experience .experience-copy{font-size:16px;line-height:1.76}.salenys-experience .experience-pair>img{min-height:500px}}
 @media(max-width:760px){.salenys-experience .experience-hero{aspect-ratio:1.7}.salenys-experience .experience-intro{padding:58px 7% 57px}.salenys-experience .experience-wide-copy{column-count:1}.salenys-experience .experience-pair{display:flex;flex-direction:column}.salenys-experience .experience-pair>img{order:0;aspect-ratio:1;min-height:0;height:auto}.salenys-experience .experience-pair>.experience-textpane{order:1;padding:55px 7% 64px}.salenys-experience .experience-textpane h2{font-size:42px}.salenys-experience .experience-conclusion{padding:52px 7% 54px}.salenys-experience .experience-ending{padding:56px 7% 76px}}
+
+/* Stage 10C — Taller, immersive first Experience photo on phones.
+   Preserve the original approved photograph and keep the bottle visible. */
+@media (max-width: 760px) {
+  .salenys-experience .experience-hero {
+    display: block;
+    width: 100%;
+    height: clamp(350px, 103vw, 520px);
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: 27% center;
+  }
+}

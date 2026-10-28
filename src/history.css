@@ -47,3 +47,16 @@
  .salenys-history .history-finale {padding:65px 24px 75px;}
  .salenys-history .history-finale h2 {font-size:40px;}
 }
+
+/* Stage 10C — Taller first History photograph on phones, retaining both
+   the stone spring and historic barrels in the portrait crop. */
+@media (max-width: 760px) {
+  .salenys-history #history-page1 > .history-hero-image {
+    display: block;
+    width: 100%;
+    height: clamp(350px, 101vw, 520px);
+    min-height: 0;
+    object-fit: cover;
+    object-position: 23% center;
+  }
+}
