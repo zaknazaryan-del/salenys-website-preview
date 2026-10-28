@@ -1631,50 +1631,103 @@ html { scroll-padding-top:90px; }
   .hero .hero-product-description,.hero .hero-slogan {font-size:17px;}
 }
 
-/* Stage 10G — Mobile-only refinement, 28 October 2026.
-   At the TOP of the HOME page: shield left, Salenys lettering right.
-   On scroll or on ANY internal page: keep only the clickable shield.
-   Approved desktop header / site layout are not changed. */
+/* Stage 17 — approved header lockup revision (29 October 2026).
+   Homepage ONLY: shield left + larger original Salenys lettering right.
+   The complete lockup remains visible when scrolling at all screen widths.
+   Internal pages have no upper-left logo or lettering; navigation and
+   language controls stay available according to existing responsive rules. */
+.brand-mark > .brand-logo-original { display: none; }
+.site-header .brand-mark {
+  width: 100%;
+  max-width: 246px;
+  min-width: 0;
+}
+.site-header .brand-logo-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+}
+.site-header .brand-logo-mobile .brand-logo-shield,
+.site-header--scrolled .brand-logo-mobile .brand-logo-shield {
+  display: block;
+  flex: 0 0 auto;
+  width: 54px;
+  height: 77px;
+  max-width: none;
+  object-fit: contain;
+}
+.site-header .brand-logo-mobile .brand-logo-lettering,
+.site-header--scrolled .brand-logo-mobile .brand-logo-lettering {
+  display: block;
+  flex: 0 1 auto;
+  width: 170px;
+  max-width: calc(100% - 62px);
+  height: auto;
+  max-height: 73px;
+  object-fit: contain;
+}
+.site-header--scrolled .brand-logo-mobile .brand-logo-shield { height: 62px; width: 44px; }
+.site-header--scrolled .brand-logo-mobile .brand-logo-lettering { max-height: 59px; width: 162px; }
+
+/* Preserve room for the five approved desktop navigation items. */
+@media (min-width: 1101px) {
+  .site-header .header-inner {
+    grid-template-columns: minmax(214px, 246px) minmax(0, 1fr) auto;
+  }
+  .site-header .main-navigation { transform: none; }
+  .site-header--internal .header-inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .site-header--internal .main-navigation { grid-column: 1; }
+  .site-header--internal .header-utilities { grid-column: 2; }
+}
+@media (min-width: 1101px) and (max-width: 1360px) {
+  .site-header .header-inner {
+    grid-template-columns: minmax(195px, 214px) minmax(0, 1fr) auto;
+  }
+  .site-header--internal .header-inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .site-header .brand-logo-mobile .brand-logo-lettering { width: 148px; }
+  .site-header .brand-logo-mobile .brand-logo-shield { width: 50px; }
+}
+
+/* Mobile: retain transparent -> grey scroll behavior, with both logo elements
+   continuously visible on the homepage (never on internal pages). */
 @media (max-width: 1100px) {
-  .brand-logo-mobile {
-    gap: 6px;
-    justify-content: flex-start;
-  }
-  .brand-logo-mobile .brand-logo-shield,
-  .site-header--scrolled .brand-logo-mobile .brand-logo-shield {
-    flex: 0 0 auto;
-    width: 45px;
-    height: 66px;
-    object-fit: contain;
-  }
-  .brand-logo-mobile .brand-logo-lettering {
-    flex: 1 1 auto;
-    width: min(100% - 52px, 128px);
-    max-width: 128px;
-    height: auto;
-    max-height: 60px;
-    object-fit: contain;
-  }
-  .site-header--scrolled .brand-logo-mobile .brand-logo-lettering,
-  .site-header--internal .brand-logo-mobile .brand-logo-lettering {
-    display: none;
-  }
+  .site-header .header-inner,
+  body:has(.carbonation-hero) .site-header .header-inner,
   .site-header--scrolled .header-inner,
-  .site-header--internal .header-inner,
-  body:has(.carbonation-hero) .site-header--scrolled .header-inner,
-  body:has(.carbonation-hero) .site-header--internal .header-inner {
-    grid-template-columns: 62px minmax(0,1fr) auto;
+  .site-header--internal .header-inner {
+    grid-template-columns: minmax(0, 1fr) 44px auto;
+    gap: 6px;
   }
-  .site-header--scrolled .brand-mark,
-  .site-header--internal .brand-mark {
-    width: 56px;
-    max-width: 56px;
+  .site-header .brand-mark {
+    max-width: 202px;
+    width: 100%;
+    height: 76px;
   }
-  .site-header--scrolled .brand-logo-mobile,
-  .site-header--internal .brand-logo-mobile {
-    width: 56px;
+  .site-header .brand-logo-mobile { gap: 5px; }
+  .site-header .brand-logo-mobile .brand-logo-shield,
+  .site-header--scrolled .brand-logo-mobile .brand-logo-shield {
+    width: 45px;
+    height: 65px;
   }
-  /* Both approved hero lines: rich near-black ink for better image contrast. */
+  .site-header .brand-logo-mobile .brand-logo-lettering,
+  .site-header--scrolled .brand-logo-mobile .brand-logo-lettering {
+    display: block;
+    width: 142px;
+    max-width: calc(100% - 50px);
+    height: auto;
+    max-height: 62px;
+  }
+  .mobile-navigation-toggle { grid-column: 2; }
+  .header-utilities,
+  body:has(.carbonation-hero) .header-utilities { grid-column: 3; }
+  /* Keep the previously approved darker type beside the bottle. */
   .hero .hero-product-description,
   .hero .hero-slogan {
     color: #01070c;
@@ -1682,33 +1735,25 @@ html { scroll-padding-top:90px; }
     text-shadow: 0 1px 2px rgba(255,255,255,.98), 0 0 7px rgba(255,255,255,.6);
   }
 }
-@media (max-width: 560px) {
-  .brand-logo-mobile .brand-logo-shield,
-  .site-header--scrolled .brand-logo-mobile .brand-logo-shield {
-    width: 43px;
-    height: 64px;
-  }
-  .brand-logo-mobile .brand-logo-lettering {
-    flex: 1 1 auto;
-    width: calc(100% - 49px);
-    max-width: 110px;
-    max-height: 55px;
-  }
-  .site-header--scrolled .header-inner,
-  .site-header--internal .header-inner,
-  body:has(.carbonation-hero) .site-header--scrolled .header-inner,
-  body:has(.carbonation-hero) .site-header--internal .header-inner {
-    grid-template-columns: 58px minmax(0, 1fr) auto;
-  }
-}
 @media (max-width: 370px) {
-  .brand-logo-mobile .brand-logo-shield,
+  .site-header .header-inner,
+  body:has(.carbonation-hero) .site-header .header-inner,
+  .site-header--scrolled .header-inner,
+  .site-header--internal .header-inner {
+    grid-template-columns: minmax(0, 1fr) 40px auto;
+    gap: 3px;
+  }
+  .site-header .brand-mark { max-width: 162px; }
+  .site-header .brand-logo-mobile { gap: 3px; }
+  .site-header .brand-logo-mobile .brand-logo-shield,
   .site-header--scrolled .brand-logo-mobile .brand-logo-shield {
     width: 40px;
     height: 60px;
   }
-  .brand-logo-mobile .brand-logo-lettering {
-    max-width: 81px;
-    max-height: 50px;
+  .site-header .brand-logo-mobile .brand-logo-lettering,
+  .site-header--scrolled .brand-logo-mobile .brand-logo-lettering {
+    width: 115px;
+    max-width: calc(100% - 43px);
+    max-height: 53px;
   }
 }

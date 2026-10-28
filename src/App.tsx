@@ -10,6 +10,7 @@ import OriginPage from "./OriginPage"
 import ProductsPage from "./ProductsPage"
 import ExperiencePage from "./ExperiencePage"
 import FindSalenysPage from "./FindSalenysPage"
+import LegalPage, { type LegalKind } from "./LegalPage"
 
 type Language = "en" | "es" | "cat"
 
@@ -170,6 +171,8 @@ function Header({
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
+  const currentPath = window.location.pathname.replace(/\/+$/, "")
+  const isHomepage = currentPath === "" || currentPath === "/index.html"
 
   useEffect(() => {
     const onScroll = () => {
@@ -207,31 +210,28 @@ function Header({
   return (
     <header
       ref={headerRef}
-      className={`site-header${scrolled ? " site-header--scrolled" : ""}${window.location.pathname.replace(/\/+$/, "") !== "" ? " site-header--internal" : ""}`}
+      className={`site-header${scrolled ? " site-header--scrolled" : ""}${!isHomepage ? " site-header--internal" : ""}`}
     >
       <div className="header-inner">
-        <a
-          className="brand-mark"
-          href="/"
-          aria-label="Aigua de Salenys — Go to homepage"
-          title="Go to homepage"
-          onClick={(event) => {
-            // A regular link returns from every internal page. On the homepage,
-            // scroll to its beginning without triggering an unnecessary reload.
-            if (window.location.pathname.replace(/\/+$/, "") === "") {
+        {isHomepage && (
+          <a
+            className="brand-mark"
+            href="/"
+            aria-label="Aigua de Salenys — Go to homepage"
+            title="Go to homepage"
+            onClick={(event) => {
               event.preventDefault()
               window.scrollTo({ top: 0, behavior: "smooth" })
-            }
-            setOpenMenu(null)
-            setMobileMenuOpen(false)
-          }}
-        >
-          <img className="brand-logo-original" src="/assets/salenys-logo.svg" alt="Aigua de Salenys" />
-          <span className="brand-logo-mobile" aria-hidden="true">
-            <img className="brand-logo-shield" src="/assets/salenys-header-shield.png" alt="" />
-            <img className="brand-logo-lettering" src="/assets/salenys-header-lettering.png" alt="" />
-          </span>
-        </a>
+              setOpenMenu(null)
+              setMobileMenuOpen(false)
+            }}
+          >
+            <span className="brand-logo-mobile" aria-hidden="true">
+              <img className="brand-logo-shield" src="/assets/salenys-header-shield.png" alt="" />
+              <img className="brand-logo-lettering" src="/assets/salenys-header-lettering.png" alt="" />
+            </span>
+          </a>
+        )}
 
         <button
           className="mobile-navigation-toggle"
@@ -578,9 +578,9 @@ function Footer({
 
         <div className="footer-column">
           <h2>Information</h2>
-          <a href="#legal-notice-pending">Legal notice</a>
-          <a href="#privacy-policy-pending">Privacy policy</a>
-          <a href="#cookie-policy-pending">Cookie policy</a>
+          <a href="/legal-notice/">Legal notice</a>
+          <a href="/privacy-policy/">Privacy policy</a>
+          <a href="/cookie-policy/">Cookie policy</a>
         </div>
 
         <div className="footer-contact">
@@ -791,7 +791,9 @@ export default function App() {
     <>
       <Header language={language} onLanguageChange={changeLanguage} />
       <main>
-        {window.location.pathname.replace(/\/+$/, "") === "/find-salenys" ? (
+        {(["/legal-notice", "/privacy-policy", "/cookie-policy"] as const).includes(window.location.pathname.replace(/\/+$/, "") as "/legal-notice" | "/privacy-policy" | "/cookie-policy") ? (
+          <LegalPage kind={window.location.pathname.replace(/\/+$/, "").slice(1) as LegalKind} language={language} />
+        ) : window.location.pathname.replace(/\/+$/, "") === "/find-salenys" ? (
           <FindSalenysPage />
         ) : window.location.pathname.replace(/\/+$/, "") === "/the-experience" ? (
           <ExperiencePage />
