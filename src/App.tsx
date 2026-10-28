@@ -120,6 +120,23 @@ const SOCIAL_PROFILE_URLS = {
   youtube: "https://www.youtube.com/@salenyssl3750",
 } as const
 
+/** WhatsApp contact: icon only, never display the underlying mobile number. */
+function WhatsAppLink() {
+  return (
+    <a className="salenys-whatsapp" href="https://wa.me/34667322471" target="_blank"
+      rel="noopener noreferrer" aria-label="Chat with Salenys on WhatsApp (opens in a new tab)"
+      title="Chat with Salenys on WhatsApp">
+      <svg viewBox="0 0 32 32" role="img" aria-hidden="true">
+        <path fill="currentColor" d="M16 2.5a13.5 13.5 0 0 0-11.72 20.2L2.5 29.5l7.03-1.84A13.5 13.5 0 1 0 16 2.5Z"/>
+        <path d="M9.7 8.9a10.1 10.1 0 0 1 14.9 13.54 10.12 10.12 0 0 1-11.95 2.42L8 26.05l1.26-4.51A10.06 10.06 0 0 1 9.7 8.9Z"
+          fill="none" stroke="#fff" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M12.4 10.9c-.25-.55-.51-.57-.76-.57h-.65c-.25 0-.65.1-.98.47s-1.28 1.26-1.28 3.06 1.31 3.54 1.49 3.78 2.57 4.09 6.15 5.52c.87.35 1.54.55 2.07.7.88.28 1.69.24 2.32.14.71-.11 2.2-.91 2.51-1.78.31-.87.31-1.61.22-1.77-.09-.16-.34-.25-.72-.44l-2.15-1.06c-.28-.1-.46-.16-.67.16-.22.31-.82 1.06-1.01 1.28-.19.22-.37.25-.69.08-.32-.16-1.34-.49-2.56-1.57-.95-.85-1.59-1.9-1.78-2.22-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.2.21-.33.31-.54.1-.22.05-.4-.03-.57Z"
+          fill="#fff" transform="translate(1 0) scale(.92)"/>
+      </svg>
+    </a>
+  )
+}
+
 function SocialLinks({ light = false }: { light?: boolean }) {
   return (
     <div
@@ -209,7 +226,11 @@ function Header({
             setMobileMenuOpen(false)
           }}
         >
-          <img src="/assets/salenys-logo.svg" alt="Aigua de Salenys" />
+          <img className="brand-logo-original" src="/assets/salenys-logo.svg" alt="Aigua de Salenys" />
+          <span className="brand-logo-mobile" aria-hidden="true">
+            <img className="brand-logo-lettering" src="/assets/salenys-header-lettering.png" alt="" />
+            <img className="brand-logo-shield" src="/assets/salenys-header-shield.png" alt="" />
+          </span>
         </a>
 
         <button
@@ -575,7 +596,7 @@ function Footer({
           <div className="footer-contact-details">
             <p>Aigua de Salenys</p>
             <a href="mailto:salenys@salenys.es">salenys@salenys.es</a>
-            <a href="tel:+34872096502">(+34)872096502</a>
+            <div className="salenys-phone-row"><a href="tel:+34872096502">(+34)872096502</a><WhatsAppLink /></div>
           </div>
           <SocialLinks light />
           <div

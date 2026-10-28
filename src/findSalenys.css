@@ -17,3 +17,11 @@
 .find-salenys .fs-order-success p{line-height:1.6}
 .find-salenys .fs-order-honeypot{position:absolute;left:-9999px;max-height:0;overflow:hidden}
 @media(max-width:600px){.find-salenys .fs-order-modal{padding:21px 21px 26px}.find-salenys .fs-order-overlay{padding:10px}.find-salenys .fs-order-modal{max-height:calc(100dvh - 20px)}}
+
+/* Stage 10F: telephone + icon-only WhatsApp contact. */
+.find-salenys .fs-contactlines .fs-phone-row {display:flex;align-items:center;flex-wrap:wrap;gap:12px;min-width:0;}
+.find-salenys .fs-contactlines .fs-phone-row > a:first-child {display:inline;min-width:0;}
+.find-salenys .fs-contactlines .fs-phone-row .fs-whatsapp-link {display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;flex:none;color:#25D366;border-radius:50%;}
+.find-salenys .fs-contactlines .fs-phone-row .fs-whatsapp-link svg {width:36px;height:36px;}
+.find-salenys .fs-contactlines .fs-phone-row .fs-whatsapp-link:hover {color:#128C7E;}
+.find-salenys .fs-contactlines .fs-phone-row .fs-whatsapp-link:focus-visible {outline:2px solid #25D366;outline-offset:3px;}

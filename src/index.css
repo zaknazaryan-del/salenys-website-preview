@@ -1580,3 +1580,53 @@ html { scroll-padding-top:90px; }
   }
   .hero .hero-copy { padding-top: 10px; padding-bottom: 26px; }
 }
+
+
+/* Stage 10F: clickable WhatsApp icon beside the company telephone, no visible mobile number. */
+.salenys-phone-row { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
+.salenys-whatsapp { display:inline-flex; align-items:center; justify-content:center; flex:none; width:40px; height:40px; color:#25D366; border-radius:50%; text-decoration:none; }
+.salenys-whatsapp svg { width:34px; height:34px; }
+.salenys-whatsapp:hover { color:#128C7E; }
+.salenys-whatsapp:focus-visible { outline:2px solid #25D366; outline-offset:3px; }
+.brand-logo-mobile { display:none; }
+
+/* Stage 10F: mobile header logo uses ORIGINAL brand crest and lettering, side-by-side.
+   On desktop the original, approved SVG stays untouched. */
+@media (max-width:1100px) {
+  .header-inner, body:has(.carbonation-hero) .header-inner {
+    grid-template-columns: minmax(128px, 188px) minmax(0, 1fr) auto;
+  }
+  .brand-mark { width:100%; min-width:0; max-width:188px; }
+  .brand-mark > .brand-logo-original { display:none; }
+  .brand-logo-mobile { display:flex; align-items:center; justify-content:flex-start; gap:5px; width:100%; height:100%; }
+  .brand-logo-mobile .brand-logo-lettering {
+    display:block; width:calc(100% - 54px); max-width:128px; height:auto;
+    max-height:58px; object-fit:contain; transition:none;
+  }
+  .brand-logo-mobile .brand-logo-shield {
+    display:block; width:50px; height:68px; object-fit:contain; transition:none;
+  }
+}
+@media (max-width:560px) {
+  .header-inner, body:has(.carbonation-hero) .header-inner {
+    grid-template-columns: minmax(122px, 158px) minmax(0, 1fr) auto;
+    gap:3px;
+  }
+  .brand-mark {max-width:158px;}
+  .brand-logo-mobile {gap:3px;}
+  .brand-logo-mobile .brand-logo-lettering {width:calc(100% - 46px); max-width:112px; max-height:56px;}
+  .brand-logo-mobile .brand-logo-shield {width:43px;height:64px;}
+  /* Slightly larger, darker descriptions left of the bottle, no layout change. */
+  .hero .hero-product-description, .hero .hero-slogan {
+    font-size:clamp(17.5px, 4.7vw, 21px);
+    color:#061b28;
+    font-weight:700;
+    text-shadow:0 1px 2px rgba(255,255,255,.94);
+  }
+}
+@media (max-width:370px) {
+  .header-inner, body:has(.carbonation-hero) .header-inner {grid-template-columns:124px minmax(0,1fr) auto;}
+  .brand-logo-mobile .brand-logo-lettering {width:80px;max-height:50px;}
+  .brand-logo-mobile .brand-logo-shield {width:41px;height:60px;}
+  .hero .hero-product-description,.hero .hero-slogan {font-size:17px;}
+}
