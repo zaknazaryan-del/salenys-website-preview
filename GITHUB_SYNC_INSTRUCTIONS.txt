@@ -1,0 +1,23 @@
+SALENYS STAGE 17 — GITHUB SOURCE REPAIR
+
+CAUSE:
+The previous Stage 17 correction-only ZIP included src/App.tsx and src/index.css,
+but App.tsx imports src/LegalPage.tsx from Stage 12. The existing GitHub
+repository was not synchronized with the Stage 11-16 production files.
+
+REPAIR:
+Upload the complete src/ folder AND the public/ folder in this ZIP to
+the ROOT of the SAME GitHub repository (salenys-website-preview).
+Keep paths, including src/LegalPage.tsx, src/formSubmission.ts,
+src/documentResources.ts, src/legal.css, public/__forms.html,
+and public/documents/manifest.json. Commit on the main branch.
+
+The asset photographs already uploaded to the repository remain in place;
+do not delete them. This patch includes ALL 29 source files to avoid further
+missing source imports, but no large photographs need reuploading.
+
+Netlify should automatically create a NEW deployment after the commit.
+Check the newest deployment rather than retrying the old failed build.
+
+This ZIP is a GitHub synchronization update, NOT a production-ready site ZIP.
+For hosting manager use the full Stage 17 source package.

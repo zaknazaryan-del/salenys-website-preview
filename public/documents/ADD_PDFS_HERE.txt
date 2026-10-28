@@ -1,0 +1,28 @@
+AIGUA DE SALENYS — DOCUMENT UPLOAD INSTRUCTIONS (NO REBUILD REQUIRED)
+
+The website displays TWO groups: Product Catalogue and Palletization.
+EACH group can hold up to THREE PDF documents, i.e. up to SIX PDFs total.
+No PDFs are currently included and no broken download links are shown.
+
+To publish documents later:
+1. Upload the approved PDFs to the SAME /documents/ folder on the live hosting server.
+   Use simple names such as salenys-catalogue-en.pdf or palletization-es.pdf.
+2. Open the file /documents/manifest.json on the host and populate one or both arrays.
+   EXAMPLE (only enter real PDFs that have been uploaded):
+   {
+     "catalogue": [
+       {"title":"Catalogue — English", "url":"/documents/salenys-catalogue-en.pdf"},
+       {"title":"Catalogue — Español", "url":"/documents/salenys-catalogue-es.pdf"}
+     ],
+     "palletization": [
+       {"title":"Palletization — English", "url":"/documents/palletization-en.pdf"}
+     ]
+   }
+3. Save manifest.json and test the page and each PDF URL in a private browser tab.
+4. To replace or remove files, update the corresponding JSON entries.
+
+No application/source-code changes or rebuild are necessary if the deployed
+website uses the Stage 13 implementation and the host serves /documents/.
+Use at most 3 entries in each array; files must be PDFs with simple filenames
+using Latin letters, numbers, hyphens or underscores.
+Do not include documents you are not authorized to distribute.

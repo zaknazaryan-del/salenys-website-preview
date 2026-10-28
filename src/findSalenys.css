@@ -25,3 +25,16 @@
 .find-salenys .fs-contactlines .fs-phone-row .fs-whatsapp-link svg {width:36px;height:36px;}
 .find-salenys .fs-contactlines .fs-phone-row .fs-whatsapp-link:hover {color:#128C7E;}
 .find-salenys .fs-contactlines .fs-phone-row .fs-whatsapp-link:focus-visible {outline:2px solid #25D366;outline-offset:3px;}
+
+/* Production handoff: small legal/privacy notice and sending state; unchanged form layout. */
+.find-salenys .fs-privacy-note{font-size:12px;line-height:1.55;color:var(--fs-muted);margin:12px 0;}
+.find-salenys .fs-privacy-note a{color:var(--fs-deep);text-decoration:underline;}
+.find-salenys .fs-button:disabled{opacity:.65;cursor:wait;}
+
+/* Production Stage 13: two approved resources, up to three PDF links in each. */
+.find-salenys .fs-docdownloads{display:flex;flex-direction:column;align-items:flex-end;gap:10px;min-width:0;max-width:50%}
+.find-salenys .fs-doclink{display:flex;align-items:center;justify-content:space-between;gap:20px;min-width:0;max-width:100%;font-size:13px;color:var(--fs-deep);text-decoration:none;border-bottom:1px solid #b9c8c7;padding:3px 0 5px}
+.find-salenys .fs-doclink span:first-child{overflow-wrap:anywhere;min-width:0}
+.find-salenys .fs-doclink span:last-child{font-size:12px;white-space:nowrap;text-decoration:underline}
+.find-salenys .fs-doclink:hover,.find-salenys .fs-doclink:focus-visible{color:#23687c}
+@media(max-width:600px){.find-salenys .fs-document{flex-direction:column;align-items:stretch}.find-salenys .fs-docdownloads{max-width:100%;align-items:stretch}.find-salenys .fs-doclink{width:100%}}

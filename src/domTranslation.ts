@@ -14,7 +14,7 @@ export function translateDocument(language: SiteLanguage) {
   let node: Node | null
   while ((node = walker.nextNode())) {
     const text = node as Text
-    if (text.parentElement?.closest('script,style,textarea,option[data-user-entry],code,pre')) continue
+    if (text.parentElement?.closest('script,style,textarea,option[data-user-entry],code,pre,[data-no-dom-translate]')) continue
     const original = originals.get(text) ?? text.nodeValue ?? ''
     if (!originals.has(text)) originals.set(text, original)
     const trimmed = original.trim()
@@ -25,6 +25,7 @@ export function translateDocument(language: SiteLanguage) {
     }
   }
   root.querySelectorAll('*').forEach(element => {
+    if (element.closest('[data-no-dom-translate]')) return
     const stored = attributeOriginals.get(element) ?? {}
     let changed = false
     for (const attr of attributes) {

@@ -1,0 +1,14 @@
+/* Stage 12: information pages only. Locked primary page styles untouched. */
+.salenys-legal-page{min-height:65vh;background:#f8f5ec url('/assets/internal-page-background.webp') repeat;color:#254453;font-family:'DM Sans',Arial,sans-serif;padding:135px 24px 95px}
+.legal-page-inner{width:min(100%,860px);margin:0 auto}
+.legal-kicker{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#287c99}
+.salenys-legal-page h1,.salenys-legal-page h2{font-family:'Cormorant Garamond',Georgia,serif;color:#16475a;font-weight:500}
+.salenys-legal-page h1{font-size:clamp(42px,5.4vw,76px);line-height:1.12;margin:16px 0}
+.salenys-legal-page .legal-subtitle{font-size:19px;line-height:1.65;margin:0 0 25px}
+.legal-review-alert{border:1px solid #e5b55d;background:#fff5e5;color:#764d1b;padding:15px 18px;font-size:14px;line-height:1.6}
+.legal-section{padding:22px 0;border-bottom:1px solid #d8dfda}
+.salenys-legal-page h2{font-size:clamp(26px,3vw,34px);margin:8px 0 12px}
+.legal-section p{font-size:16px;line-height:1.8;overflow-wrap:anywhere;margin:9px 0}
+.legal-back{display:inline-block;margin-top:30px;text-decoration:underline;color:#16475a;font-weight:600}
+@media(max-width:1100px){.salenys-legal-page{padding:115px 5% 65px}}
+@media(max-width:600px){.salenys-legal-page{padding:93px 5% 55px}.salenys-legal-page .legal-subtitle{font-size:17px}}
