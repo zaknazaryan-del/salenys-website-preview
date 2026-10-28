@@ -176,7 +176,7 @@ function Header({
 
   useEffect(() => {
     const onScroll = () => {
-      const hasScrolled = window.scrollY > 48
+      const hasScrolled = window.scrollY > (isHomepage ? 48 : 8)
       setScrolled(hasScrolled)
       // The mobile menu only becomes available with the grey, scrolled header.
       // Never reopen a previously expanded menu unexpectedly when scrolling down.
@@ -205,7 +205,7 @@ function Header({
       document.removeEventListener("pointerdown", onPointerDown)
       document.removeEventListener("keydown", onKeyDown)
     }
-  }, [])
+  }, [isHomepage])
 
   return (
     <header
@@ -213,25 +213,25 @@ function Header({
       className={`site-header${scrolled ? " site-header--scrolled" : ""}${!isHomepage ? " site-header--internal" : ""}`}
     >
       <div className="header-inner">
-        {isHomepage && (
-          <a
-            className="brand-mark"
-            href="/"
-            aria-label="Aigua de Salenys — Go to homepage"
-            title="Go to homepage"
-            onClick={(event) => {
+        <a
+          className="brand-mark"
+          href="/"
+          aria-label="Aigua de Salenys — Go to homepage"
+          title="Go to homepage"
+          onClick={(event) => {
+            if (isHomepage) {
               event.preventDefault()
               window.scrollTo({ top: 0, behavior: "smooth" })
-              setOpenMenu(null)
-              setMobileMenuOpen(false)
-            }}
-          >
-            <span className="brand-logo-mobile" aria-hidden="true">
-              <img className="brand-logo-shield" src="/assets/salenys-header-shield.png" alt="" />
-              <img className="brand-logo-lettering" src="/assets/salenys-header-lettering.png" alt="" />
-            </span>
-          </a>
-        )}
+            }
+            setOpenMenu(null)
+            setMobileMenuOpen(false)
+          }}
+        >
+          <span className="brand-logo-mobile" aria-hidden="true">
+            <img className="brand-logo-shield" src="/assets/salenys-header-shield.png" alt="" />
+            <img className="brand-logo-lettering" src="/assets/salenys-header-lettering.png" alt="" />
+          </span>
+        </a>
 
         <button
           className="mobile-navigation-toggle"

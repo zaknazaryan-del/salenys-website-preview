@@ -1757,3 +1757,32 @@ html { scroll-padding-top:90px; }
     max-height: 53px;
   }
 }
+
+
+/* Stage 18 — final header visibility adjustment.
+   Home: the shield and larger Salenys lettering remain visible at the top
+   and while scrolling. Internal pages: the same combined lockup is hidden
+   initially and appears on the first downward scroll (8px), alongside the
+   grey fixed header. Works on desktop and mobile; same approved assets. */
+.site-header--internal:not(.site-header--scrolled) .brand-mark {
+  display: none;
+}
+
+/* Desktop internal routes start with the approved full-width navigation,
+   then reserve the same left brand column as the homepage when scrolled. */
+@media (min-width: 1101px) {
+  .site-header--internal.site-header--scrolled .header-inner {
+    grid-template-columns: minmax(214px, 246px) minmax(0, 1fr) auto;
+  }
+  .site-header--internal.site-header--scrolled .main-navigation {
+    grid-column: 2;
+  }
+  .site-header--internal.site-header--scrolled .header-utilities {
+    grid-column: 3;
+  }
+}
+@media (min-width: 1101px) and (max-width: 1360px) {
+  .site-header--internal.site-header--scrolled .header-inner {
+    grid-template-columns: minmax(195px, 214px) minmax(0, 1fr) auto;
+  }
+}
