@@ -1630,3 +1630,85 @@ html { scroll-padding-top:90px; }
   .brand-logo-mobile .brand-logo-shield {width:41px;height:60px;}
   .hero .hero-product-description,.hero .hero-slogan {font-size:17px;}
 }
+
+/* Stage 10G — Mobile-only refinement, 28 October 2026.
+   At the TOP of the HOME page: shield left, Salenys lettering right.
+   On scroll or on ANY internal page: keep only the clickable shield.
+   Approved desktop header / site layout are not changed. */
+@media (max-width: 1100px) {
+  .brand-logo-mobile {
+    gap: 6px;
+    justify-content: flex-start;
+  }
+  .brand-logo-mobile .brand-logo-shield,
+  .site-header--scrolled .brand-logo-mobile .brand-logo-shield {
+    flex: 0 0 auto;
+    width: 45px;
+    height: 66px;
+    object-fit: contain;
+  }
+  .brand-logo-mobile .brand-logo-lettering {
+    flex: 1 1 auto;
+    width: min(100% - 52px, 128px);
+    max-width: 128px;
+    height: auto;
+    max-height: 60px;
+    object-fit: contain;
+  }
+  .site-header--scrolled .brand-logo-mobile .brand-logo-lettering,
+  .site-header--internal .brand-logo-mobile .brand-logo-lettering {
+    display: none;
+  }
+  .site-header--scrolled .header-inner,
+  .site-header--internal .header-inner,
+  body:has(.carbonation-hero) .site-header--scrolled .header-inner,
+  body:has(.carbonation-hero) .site-header--internal .header-inner {
+    grid-template-columns: 62px minmax(0,1fr) auto;
+  }
+  .site-header--scrolled .brand-mark,
+  .site-header--internal .brand-mark {
+    width: 56px;
+    max-width: 56px;
+  }
+  .site-header--scrolled .brand-logo-mobile,
+  .site-header--internal .brand-logo-mobile {
+    width: 56px;
+  }
+  /* Both approved hero lines: rich near-black ink for better image contrast. */
+  .hero .hero-product-description,
+  .hero .hero-slogan {
+    color: #01070c;
+    font-weight: 800;
+    text-shadow: 0 1px 2px rgba(255,255,255,.98), 0 0 7px rgba(255,255,255,.6);
+  }
+}
+@media (max-width: 560px) {
+  .brand-logo-mobile .brand-logo-shield,
+  .site-header--scrolled .brand-logo-mobile .brand-logo-shield {
+    width: 43px;
+    height: 64px;
+  }
+  .brand-logo-mobile .brand-logo-lettering {
+    flex: 1 1 auto;
+    width: calc(100% - 49px);
+    max-width: 110px;
+    max-height: 55px;
+  }
+  .site-header--scrolled .header-inner,
+  .site-header--internal .header-inner,
+  body:has(.carbonation-hero) .site-header--scrolled .header-inner,
+  body:has(.carbonation-hero) .site-header--internal .header-inner {
+    grid-template-columns: 58px minmax(0, 1fr) auto;
+  }
+}
+@media (max-width: 370px) {
+  .brand-logo-mobile .brand-logo-shield,
+  .site-header--scrolled .brand-logo-mobile .brand-logo-shield {
+    width: 40px;
+    height: 60px;
+  }
+  .brand-logo-mobile .brand-logo-lettering {
+    max-width: 81px;
+    max-height: 50px;
+  }
+}

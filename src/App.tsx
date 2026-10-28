@@ -207,7 +207,7 @@ function Header({
   return (
     <header
       ref={headerRef}
-      className={`site-header${scrolled ? " site-header--scrolled" : ""}`}
+      className={`site-header${scrolled ? " site-header--scrolled" : ""}${window.location.pathname.replace(/\/+$/, "") !== "" ? " site-header--internal" : ""}`}
     >
       <div className="header-inner">
         <a
@@ -228,8 +228,8 @@ function Header({
         >
           <img className="brand-logo-original" src="/assets/salenys-logo.svg" alt="Aigua de Salenys" />
           <span className="brand-logo-mobile" aria-hidden="true">
-            <img className="brand-logo-lettering" src="/assets/salenys-header-lettering.png" alt="" />
             <img className="brand-logo-shield" src="/assets/salenys-header-shield.png" alt="" />
+            <img className="brand-logo-lettering" src="/assets/salenys-header-lettering.png" alt="" />
           </span>
         </a>
 
