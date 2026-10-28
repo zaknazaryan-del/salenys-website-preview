@@ -46,20 +46,34 @@
 @media(max-width:1000px){.salenys-products .heritage-text{padding:7%}.salenys-products .copy{font-size:15px}.salenys-products .package-info{padding:35px 5% 45px}}
 @media(max-width:700px){.salenys-products .hero{aspect-ratio:1.65;object-position:center center}.salenys-products .intro{padding:58px 7% 66px}.salenys-products .intro h1{font-size:48px}.salenys-products .formats{padding:56px 6% 70px}.salenys-products .formats .lead{margin-bottom:32px}.salenys-products .format-grid{grid-template-columns:1fr;gap:35px;max-width:440px}.salenys-products .format h3{font-size:32px}.salenys-products .format-copy{padding:15px 1px 0}.salenys-products .final-formats{margin:44px auto 0}.salenys-products .packaging-intro{padding:67px 7% 35px}.salenys-products .packages{grid-template-columns:1fr}.salenys-products .package-info{padding:27px 7% 43px}.salenys-products .distribution-note{padding:0 7% 60px}.salenys-products .heritage{grid-template-columns:1fr}.salenys-products .heritage-text{padding:50px 7%}.salenys-products .ending{padding:83px 7% 85px}.salenys-products .ending h2{font-size:41px}.salenys-products .paper{background-size:420px auto}}
 
-/* Stage 10C — Products mobile: remove the empty, mis-sized opening image
-   inherited from the generic homepage .hero class, and bring the approved
-   product introduction directly below the fixed navigation. */
+/* Stage 10E — Restore the approved Products opening photograph on mobile.
+   Stage 10C hid it because a generic .hero rule created an oversized blank
+   region. The photograph was not missing: /assets/products/p01.webp exists.
+   Give this image an explicit mobile height and remove inherited homepage
+   hero padding, without affecting the approved desktop presentation. */
 @media (max-width: 1100px) {
   .salenys-products > img.hero {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: clamp(295px, 72vw, 440px);
     min-height: 0;
-    height: auto;
     max-height: none;
     padding: 0;
-    background: transparent;
+    margin: 0;
+    aspect-ratio: auto;
     object-fit: cover;
+    object-position: center center;
+    overflow: visible;
+    isolation: auto;
   }
 }
 @media (max-width: 760px) {
-  .salenys-products > img.hero { display: none; }
-  .salenys-products .intro { padding-top: 112px; }
+  .salenys-products > img.hero {
+    height: clamp(280px, 85vw, 385px);
+    object-position: 50% 50%;
+  }
+  /* Restore the regular spacing after an actual photograph, not an empty gap. */
+  .salenys-products .intro { padding-top: 50px; }
 }
