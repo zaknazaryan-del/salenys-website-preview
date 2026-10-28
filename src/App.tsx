@@ -407,14 +407,6 @@ function Hero() {
         </div>
 
       </div>
-      <a
-        className="scroll-cue"
-        href="#discover"
-        aria-label="Continue to explore"
-      >
-        <span>Explore</span>
-        <ArrowIcon />
-      </a>
     </section>
   )
 }
