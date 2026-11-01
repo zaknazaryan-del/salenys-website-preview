@@ -1786,3 +1786,30 @@ html { scroll-padding-top:90px; }
     grid-template-columns: minmax(195px, 214px) minmax(0, 1fr) auto;
   }
 }
+
+/* Stage 21 review — approved navigation/scroll color and map footer icon.
+   Same pale blue (#f2fafb) used for the first homepage discovery panel. */
+.site-header--scrolled::before,
+body:has(.carbonation-hero) .site-header--scrolled::before {
+  background: rgba(242, 250, 251, 0.97);
+}
+/* Keep the Find Salenys 4-item dropdown within the right edge of the header. */
+@media (min-width: 1101px) {
+  .main-navigation > .nav-item:last-child .submenu {
+    left: auto;
+    right: 0;
+    width: 242px;
+  }
+}
+/* Map marker is intentionally smaller than the three official social icons. */
+.social-links--light .social-icon--map {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: #69c7e9;
+  stroke-width: 1.9;
+  stroke-linejoin: round;
+}
+.social-links--light .salenys-map-link:hover .social-icon--map {
+  stroke: #ffffff;
+}

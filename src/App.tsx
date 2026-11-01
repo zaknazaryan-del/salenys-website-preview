@@ -43,7 +43,15 @@ const navItems: NavItem[] = [
     ],
   },
   { label: "The Experience", href: "/the-experience/" },
-  { label: "Find Salenys", href: "/find-salenys/" },
+  {
+    label: "Find Salenys", href: "/find-salenys/",
+    children: [
+      { label: "Business relationships", href: "/find-salenys/#collaborate" },
+      { label: "Contact Salenys", href: "/find-salenys/#contact" },
+      { label: "Suggest Salenys Here", href: "/find-salenys/#suggest" },
+      { label: "Catalogue & Documents", href: "/find-salenys/#documents" },
+    ],
+  },
 ]
 
 function ArrowIcon({ direction = "down" }: { direction?: "down" | "right" }) {
@@ -156,6 +164,21 @@ function SocialLinks({ light = false }: { light?: boolean }) {
           <SocialIcon name={name} />
         </a>
       ))}
+      {light && (
+        <a
+          className="salenys-map-link"
+          href="https://www.google.com/maps/place/Aigua+De+Salenys/@41.8400498,2.9665488,17z/data=!3m1!4b1!4m6!3m5!1s0x12bb031d3c4265bd:0xf75c83b07a5cfccc!8m2!3d41.8400498!4d2.9665488!16s%2Fg%2F11cr_9j5k7?entry=ttu"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Find Aigua de Salenys on Google Maps (opens in a new tab)"
+          title="Aigua de Salenys location on Google Maps"
+        >
+          <svg className="social-icon social-icon--map" aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M12 22s-7-6.5-7-12.8a7 7 0 0 1 14 0C19 15.5 12 22 12 22Z" />
+            <circle cx="12" cy="9.3" r="2.7" />
+          </svg>
+        </a>
+      )}
     </div>
   )
 }
@@ -251,8 +274,8 @@ function Header({
               className={`nav-item${
                 openMenu === item.label ? " nav-item--open" : ""
               }`}
-              onMouseEnter={() => window.matchMedia("(min-width: 901px)").matches && item.children && setOpenMenu(item.label)}
-              onMouseLeave={() => window.matchMedia("(min-width: 901px)").matches && item.children && setOpenMenu(null)}
+              onMouseEnter={() => window.matchMedia("(min-width: 1101px)").matches && item.children && setOpenMenu(item.label)}
+              onMouseLeave={() => window.matchMedia("(min-width: 1101px)").matches && item.children && setOpenMenu(null)}
             >
               <a className="nav-title" href={item.href}>
                 {item.label}
@@ -392,8 +415,8 @@ function Hero() {
               Discover the Water
               <ArrowIcon direction="right" />
             </a>
-            <a className="button button--secondary" href="/find-salenys/">
-              Find Salenys
+            <a className="button button--secondary" href="/find-salenys/?order=1">
+              Order Salenys
             </a>
           </div>
           <div className="hero-benefits" aria-label="Salenys qualities">

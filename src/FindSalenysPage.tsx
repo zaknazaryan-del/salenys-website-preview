@@ -33,6 +33,18 @@ function DocItem({ title, description, files }: { title: string; description: st
   return <div className="fs-document"><div className="fs-docleft"><span className="fs-pdf" aria-hidden="true">PDF</span><div><strong>{title}</strong><small>{description}</small></div></div><div className="fs-docdownloads">{files.length ? files.map(file => <a key={file.url} className="fs-doclink" href={file.url} target="_blank" rel="noopener noreferrer" aria-label={`Download ${file.title} PDF`}><span>{file.title}</span><span>Download PDF</span></a>) : <span className="fs-docstatus">Documents to add</span>}</div></div>;
 }
 export default function FindSalenysPage() {
+  // The fixed header must not obscure the four Find Salenys deep-link sections.
+  // On direct navigation, React mounts after the browser's initial hash scroll.
+  useEffect(() => {
+    const target = window.location.hash.slice(1);
+    if (!['collaborate', 'contact', 'suggest', 'documents'].includes(target)) return;
+    const frame = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        document.getElementById(target)?.scrollIntoView({ block: 'start' });
+      });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
   const [documentFiles, setDocumentFiles] = useState(emptyDocumentFiles);
   useEffect(() => {
     const controller = new AbortController();
@@ -41,7 +53,7 @@ export default function FindSalenysPage() {
     });
     return () => controller.abort();
   }, []);
-  const [orderOpen, setOrderOpen] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(() => new URLSearchParams(window.location.search).get('order') === '1');
   const [orderStatus, setOrderStatus] = useState<'idle'|'sending'|'success'|'error'>('idle');
   const orderFirstField = useRef<HTMLSelectElement>(null);
   useEffect(() => {

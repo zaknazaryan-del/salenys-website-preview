@@ -38,3 +38,6 @@
 .find-salenys .fs-doclink span:last-child{font-size:12px;white-space:nowrap;text-decoration:underline}
 .find-salenys .fs-doclink:hover,.find-salenys .fs-doclink:focus-visible{color:#23687c}
 @media(max-width:600px){.find-salenys .fs-document{flex-direction:column;align-items:stretch}.find-salenys .fs-docdownloads{max-width:100%;align-items:stretch}.find-salenys .fs-doclink{width:100%}}
+
+/* Stage 21: section links from Find Salenys header dropdown. */
+#collaborate, #contact, #suggest, #documents { scroll-margin-top: 94px; }

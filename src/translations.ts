@@ -2,6 +2,8 @@ export type SiteLanguage = "en" | "es" | "cat"
 
 export const translations: Record<"es" | "cat", Record<string, string>> = {
   "es": {
+    "Business relationships": "Relaciones comerciales",
+    "Find Aigua de Salenys on Google Maps (opens in a new tab)": "Ver Aigua de Salenys en Google Maps (se abre en otra pestaña)",
     ". Privacy enquiries:": ". Consultas sobre privacidad:",
     "History since 1823": "Historia desde 1823",
     "Since 1823. A Remarkable Natural Heritage.": "Desde 1823. Un extraordinario patrimonio natural.",
@@ -272,6 +274,8 @@ export const translations: Record<"es" | "cat", Record<string, string>> = {
     "been sent or saved. A verified submission service must be connected before publication.": "se han enviado ni guardado. Debe conectarse un servicio de envío verificado antes de la publicación."
   },
   "cat": {
+    "Business relationships": "Relacions comercials",
+    "Find Aigua de Salenys on Google Maps (opens in a new tab)": "Veure Aigua de Salenys a Google Maps (s’obre en una altra pestanya)",
     ". Privacy enquiries:": ". Consultes sobre privacitat:",
     "History since 1823": "Història des de 1823",
     "Since 1823. A Remarkable Natural Heritage.": "Des de 1823. Un patrimoni natural extraordinari.",
