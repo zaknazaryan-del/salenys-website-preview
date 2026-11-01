@@ -1787,11 +1787,13 @@ html { scroll-padding-top:90px; }
   }
 }
 
-/* Stage 21 review — approved navigation/scroll color and map footer icon.
-   Same pale blue (#f2fafb) used for the first homepage discovery panel. */
+/* Stage 21B — medium blue sampled from the supplied homepage photograph.
+   Photo-sampled #5BAAEF (approx. due to screen/camera color variation).
+   Scrolled header ONLY; transparent state at page top remains unchanged.
+   This late override applies to both desktop and mobile. */
 .site-header--scrolled::before,
 body:has(.carbonation-hero) .site-header--scrolled::before {
-  background: rgba(242, 250, 251, 0.97);
+  background: rgba(91, 170, 239, 0.97);
 }
 /* Keep the Find Salenys 4-item dropdown within the right edge of the header. */
 @media (min-width: 1101px) {
